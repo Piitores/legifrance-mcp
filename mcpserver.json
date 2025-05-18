@@ -1,0 +1,31 @@
+{
+    "name": "Légifrance",
+    "description": "Recherche et consultation de textes juridiques français via l'API Légifrance",
+    "endpoints": [
+      {
+        "name": "searchLaw",
+        "description": "Recherche des textes juridiques français",
+        "parameters": {
+          "query": {
+            "type": "string",
+            "description": "Termes de recherche"
+          }
+        }
+      },
+      {
+        "name": "getLawById",
+        "description": "Récupère un texte juridique spécifique par son identifiant",
+        "parameters": {
+          "textId": {
+            "type": "string",
+            "description": "Identifiant du texte juridique"
+          },
+          "textType": {
+            "type": "string",
+            "description": "Type de texte (code, article, loi, etc.)",
+            "enum": ["code", "article", "loi", "jorf", "jurisprudence"]
+          }
+        }
+      }
+    ]
+  }
