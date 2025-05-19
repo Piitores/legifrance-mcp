@@ -1,0 +1,21 @@
+{
+    "schema_version": "v2",
+    "name_for_human": "Légifrance",
+    "name_for_model": "legifrance",
+    "description_for_human": "Recherche de codes, lois, décrets et jurisprudence dans la base de données juridique officielle française.",
+    "description_for_model": "Utilisez cet outil pour rechercher des informations juridiques françaises dans Légifrance, la base de données officielle du gouvernement français. Vous pouvez chercher des articles spécifiques dans les codes juridiques, des lois, des décrets, des arrêtés et de la jurisprudence.",
+    "auth": {
+      "type": "oauth",
+      "client_url": "https://sandbox-oauth.piste.gouv.fr/api/oauth/authorize",
+      "scope": "openid",
+      "authorization_content_type": "application/x-www-form-urlencoded",
+      "authorization_url": "https://sandbox-oauth.piste.gouv.fr/api/oauth/token"
+    },
+    "api": {
+      "type": "openapi",
+      "url": "https://sandbox-api.piste.gouv.fr/dila/legifrance/lf-engine-app/openapi.yaml"
+    },
+    "logo_url": "https://your-domain.com/logo.png",
+    "contact_email": "votre-email@example.com",
+    "legal_info_url": "https://your-domain.com/legal"
+  }

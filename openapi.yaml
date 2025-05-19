@@ -1,0 +1,113 @@
+openapi: 3.0.0
+info:
+  title: Légifrance API
+  description: API permettant d'accéder aux données juridiques françaises
+  version: 1.0.0
+servers:
+  - url: https://sandbox-api.piste.gouv.fr/dila/legifrance/lf-engine-app
+paths:
+  /consult/getArticle:
+    post:
+      summary: Récupère le contenu d'un article
+      description: Récupère un article par son identifiant
+      operationId: getArticle
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                id:
+                  type: string
+                  description: Identifiant de l'article
+              required:
+                - id
+      responses:
+        '200':
+          description: Détails de l'article demandé
+  /search:
+    post:
+      summary: Recherche juridique
+      description: Effectue une recherche dans les bases de données de Légifrance
+      operationId: search
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                recherche:
+                  type: object
+                  properties:
+                    champs:
+                      type: array
+                      items:
+                        type: object
+                    filtres:
+                      type: array
+                      items:
+                        type: object
+                    pageNumber:
+                      type: integer
+                    pageSize:
+                      type: integer
+                    operateur:
+                      type: string
+                    sort:
+                      type: string
+                    typePagination:
+                      type: string
+                fond:
+                  type: string
+              required:
+                - recherche
+                - fond
+      responses:
+        '200':
+          description: Résultats de recherche
+  /consult/code:
+    post:
+      summary: Consultation d'un code
+      description: Récupère le contenu d'un texte de type CODE
+      operationId: getCode
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                textId:
+                  type: string
+                date:
+                  type: string
+              required:
+                - textId
+                - date
+      responses:
+        '200':
+          description: Contenu du code demandé
+  /consult/legiPart:
+    post:
+      summary: Consultation d'un texte LODA
+      description: Récupère le contenu d'un texte LODA (loi, ordonnance, décret, arrêté)
+      operationId: getLoda
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                textId:
+                  type: string
+                date:
+                  type: string
+              required:
+                - textId
+                - date
+      responses:
+        '200':
+          description: Contenu du texte demandé
